@@ -38,3 +38,14 @@ test('gets inventory from player or returns false', () => {
 
     expect(player.getInventory()).toEqual(false);
 })
+
+// Create test to get the player health
+test('gets player health value', () => {
+    const player = new Player('Mike');
+
+    /* expect.stringContaining() method is an expect method that we can use to make sure
+     our string incudes our player's health 
+     This is preferred in this case because we might need flexibility mto change how the player's 
+     health will be displayed. If that change happens we wont need to update our tests as well */
+    expect(player.getHealth()).toEqual(expect.stringContaining(player.health.toString()));
+})
