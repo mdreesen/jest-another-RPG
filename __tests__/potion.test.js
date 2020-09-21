@@ -1,4 +1,6 @@
 const Potion = require('../lib/Potion.js');
+// Test command - npm run test potion
+
 
 
 // The "new" keyword creates a new object, in this case a new potion object
