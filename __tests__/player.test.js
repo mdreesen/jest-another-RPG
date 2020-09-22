@@ -39,20 +39,8 @@ test('gets inventory from player or returns false', () => {
     expect(player.getInventory()).toEqual(false);
 })
 
-<<<<<<< HEAD
-// Create test to get the player health
-test('gets player health value', () => {
-    const player = new Player('Mike');
-
-    /* expect.stringContaining() method is an expect method that we can use to make sure
-     our string incudes our player's health 
-     This is preferred in this case because we might need flexibility mto change how the player's 
-     health will be displayed. If that change happens we wont need to update our tests as well */
-    expect(player.getHealth()).toEqual(expect.stringContaining(player.health.toString()));
-})
-=======
 test('checks if player is alive or not', () => {
-    const player = new Player('Dave');
+    const player = new Player('Mike');
   
     expect(player.isAlive()).toBeTruthy();
   
@@ -62,7 +50,7 @@ test('checks if player is alive or not', () => {
   });
 
 test("subtracts from player's health", () => {
-    const player = new Player('Dave');
+    const player = new Player('Mike');
     const oldHealth = player.health;
   
     player.reduceHealth(5);
@@ -73,4 +61,30 @@ test("subtracts from player's health", () => {
   
     expect(player.health).toBe(0);
   });
->>>>>>> 42524d6c9a106fc697e280aa1528a535fdfbd91c
+
+  test("gets player's attack value", () => {
+      const player = new Player('Mike');
+      player.strength = 10;
+
+      expect(player.getAttackValue()).toBeGreaterThanOrEqual(5);
+      expect(player.getAttackValue()).toBeLessThanOrEqual(15);
+  })
+
+  test('adds a potion to the inventory', () => {
+      const player = new Player('Mike');
+      const oldCount = player.inventory.length;
+
+      player.addPotion(new Potion());
+
+      expect(player.inventory.length).toBeGreaterThan(oldCount);
+  });
+
+  test('uses a potion from inventory', () => {
+      const player = new Player('Mike');
+      player.inventory = [new Potion(), new Potion(), new Potion()];
+      const oldCount = player.inventory.length
+
+      player.usePotion(1);
+
+      expect(player.inventory.length).toBeLessThan(oldCount);
+  });
