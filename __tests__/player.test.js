@@ -39,6 +39,7 @@ test('gets inventory from player or returns false', () => {
     expect(player.getInventory()).toEqual(false);
 })
 
+<<<<<<< HEAD
 // Create test to get the player health
 test('gets player health value', () => {
     const player = new Player('Mike');
@@ -49,3 +50,27 @@ test('gets player health value', () => {
      health will be displayed. If that change happens we wont need to update our tests as well */
     expect(player.getHealth()).toEqual(expect.stringContaining(player.health.toString()));
 })
+=======
+test('checks if player is alive or not', () => {
+    const player = new Player('Dave');
+  
+    expect(player.isAlive()).toBeTruthy();
+  
+    player.health = 0;
+  
+    expect(player.isAlive()).toBeFalsy();
+  });
+
+test("subtracts from player's health", () => {
+    const player = new Player('Dave');
+    const oldHealth = player.health;
+  
+    player.reduceHealth(5);
+  
+    expect(player.health).toBe(oldHealth - 5);
+  
+    player.reduceHealth(99999);
+  
+    expect(player.health).toBe(0);
+  });
+>>>>>>> 42524d6c9a106fc697e280aa1528a535fdfbd91c
